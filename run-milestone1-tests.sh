@@ -32,7 +32,8 @@ start_backend() {
     echo -e "${YELLOW}🚀 Starting backend server...${NC}"
     cd backend
     source .venv/bin/activate
-    uvicorn app.main:app --host 0.0.0.0 --port 8000 &
+    cd ..
+    uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload --app-dir backend &
     BACKEND_PID=$!
     echo "Backend PID: $BACKEND_PID"
     cd ..
